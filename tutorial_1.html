@@ -47,8 +47,40 @@
         the start and end of the transmission. Our circuit would know that it is going to receive a bit when it detecs a falling edge that is a zero bit. Note that the end bit in our case is one</p>
       <li> Counter: This is used to decrease the frequency. As stated the baud rate is slow. Generally baud rate * counter = master clock frequency. Therefore
         for a clock of frequency 100MHz to put it to baud rate of 9600 we need to divide it by 10416. Maybe a better apporach would be to generate a clock of direct
-        frequency of 9600 through (Phase Locked Loop) and MIM (Mixed-Mode Clock Manager).
+        frequency of 9600 through (Phase Locked Loop) and MIM (Mixed-Mode Clock Manager). For counting to 10416 we need a counter of 14 bits at least.
         
+        <h1>Explaination of Code/ Basic Algo of UART Receive</h1>
+        <p>
+          Here is a simplified explanation of the code:
+        </p>
+        <ol>
+          <li>There are two blocks - one for transferring data and one for controlling signals through updating registers.</li>
+          <li>The data block operates at a frequency of 9600*4, which is controlled by a counter.</li>
+          <li>The control block operates at the positive edge of the main clock 'clk' (100MHz).</li>
+          <li>At each positive edge of clk, the control registers are reset, which are: shift, clear_samplecounter, inc_samplecounter, clear_bitcounter, inc_bitcounter, and nextstate.</li>
+          <li>The circuit is always scanning RxD in the default state (state 0).</li>
+          <li>The current state goes to the next state when RxD becomes zero, and the circuit is in RECEIVE state (state 1).</li>
+          <li>
+            In the RECEIVE state, there are three things that can happen:
+            <ol type="i">
+              <li>If sample_counter is 0 or 2, the increment signal of sample_counter is set to 1.</li>
+              <li>If sample_counter is 1, the increment signal of sample_counter and the shift register are set to 1.</li>
+              <li>If sample_counter is 3, the bit counter is checked to ensure all 10 bits have been read.</li>
+              </ol>
+          .</ol>
+</li>
+<li>The data block takes action when the counter becomes 1 (i.e., when a secondary sync clocked of 9600*4 frequency occurs).</li>
+<li>When the data block receives a 0 bit, its inc_samplecounter gets set to 1. However, it only gets to update samplecounter at the positive edge of the slower clock.</li>
+<li>When samplecounter gets to 1, the shift also becomes 1, but RxD only gets updated with rxshiftreg at the next cycle of the slower clock. This happens after two cycles have passed, which is almost the middle of the bit due to the fast 100MHz clock.</li>
+<li>At the third cycle of the slow clock, samplecounter goes to 2, and in the fourth cycle, it goes to 3, and the data bit is completed.</li>
+.</ol>
+</li>
+<li>The data block takes action when the counter becomes 1 (i.e., when a secondary sync clocked of 9600*4 frequency occurs).</li>
+<li>When the data block receives a 0 bit, its inc_samplecounter gets set to 1. However, it only gets to update samplecounter at the positive edge of the slower clock.</li>
+<li>When samplecounter gets to 1, the shift also becomes 1, but RxD only gets updated with rxshiftreg at the next cycle of the slower clock. This happens after two cycles have passed, which is almost the middle of the bit due to the fast 100MHz clock.</li>
+<li>At the third cycle of the slow clock, samplecounter goes to 2, and in the fourth cycle, it goes to 3, and the data bit is completed.</li>
+</ol>
+
     </div>
   </body>
 </html>
