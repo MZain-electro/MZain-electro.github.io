@@ -43,6 +43,12 @@
 
       <h3>Some Important Terms</h3>
       <li> Baud Rate: It is the rate at which bits are sent. For UART it is generally 9600. This means that per second aroudn 9600 bits are being transferred. Just 0.0012 MBs or 1.2KBs. Hence, a bit slow! </li>
+      <p>Start and End Bit: Start and end bits are special bits added to the beginning and end of a group of data bits in a serial data transmission to signal 
+        the start and end of the transmission. Our circuit would know that it is going to receive a bit when it detecs a falling edge that is a zero bit. Note that the end bit in our case is one</p>
+      <li> Counter: This is used to decrease the frequency. As stated the baud rate is slow. Generally baud rate * counter = master clock frequency. Therefore
+        for a clock of frequency 100MHz to put it to baud rate of 9600 we need to divide it by 10416. Maybe a better apporach would be to generate a clock of direct
+        frequency of 9600 through (Phase Locked Loop) and MIM (Mixed-Mode Clock Manager).
+        
     </div>
   </body>
 </html>
