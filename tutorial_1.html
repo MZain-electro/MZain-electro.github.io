@@ -98,13 +98,12 @@
               <li>If sample_counter is 1, the increment signal of sample_counter and the shift register are set to 1.</li>
               <li>If sample_counter is 3, the bit counter is checked to ensure all 10 bits have been read.</li>
               </ol>
-          .</ol>
+          
 </li>
 <li>The data block takes action when the counter becomes 1 (i.e., when a secondary sync clocked of 9600*4 frequency occurs).</li>
 <li>When the data block receives a 0 bit, its inc_samplecounter gets set to 1. However, it only gets to update samplecounter at the positive edge of the slower clock.</li>
 <li>When samplecounter gets to 1, the shift also becomes 1, but RxD only gets updated with rxshiftreg at the next cycle of the slower clock. This happens after two cycles have passed, which is almost the middle of the bit due to the fast 100MHz clock.</li>
 <li>At the third cycle of the slow clock, samplecounter goes to 2, and in the fourth cycle, it goes to 3, and the data bit is completed.</li>
-.</ol>
 </li>
 <li>The data block takes action when the counter becomes 1 (i.e., when a secondary sync clocked of 9600*4 frequency occurs).</li>
 <li>When the data block receives a 0 bit, its inc_samplecounter gets set to 1. However, it only gets to update samplecounter at the positive edge of the slower clock.</li>
