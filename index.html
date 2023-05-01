@@ -11,112 +11,118 @@
     </script>
     <title>My FPGA Tutorials</title>
     <style>
-    body {
+      body {
         background-image: linear-gradient(to right, rgb(46, 39, 39), rgba(3, 66, 161, 0.651));
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         color: #fff;
         margin: 0;
         padding: 0;
       }
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-  }
 
-  h1 {
-    font-size: 32px;
-    margin-top: 0;
-  }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+      }
 
-  img {
-    height: 150px;
-    width: 150px;
-    border-radius: 50%;
-    margin-left: 20px;
-  }
+      h1 {
+        font-size: 32px;
+        margin-top: 0;
+      }
 
-  p {
-    font-size: 20px;
-    line-height: 1.5;
-    margin: 0;
-    padding: 20px;
-  }
+      img {
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        margin-left: 20px;
+      }
 
-  section {
-    background-color: #fff;
-    color: #333;
-    padding: 20px;
-    margin: 20px;
-  }
+      p {
+        font-size: 20px;
+        line-height: 1.5;
+        margin: 0;
+        padding: 20px;
+      }
 
-  section h1 {
-    font-size: 28px;
-    margin-top: 0;
-    text-align: center;
-    margin-bottom: 20px;
-  }
+      section {
+        background-color: #fff;
+        color: #333;
+        padding: 20px;
+        margin: 20px;
+      }
 
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
+      section h1 {
+        font-size: 28px;
+        margin-top: 0;
+        text-align: center;
+        margin-bottom: 20px;
+      }
 
-  li {
-      color: black;
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
 
-  a {
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
-  }
+      li {
+        color: black;
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
 
-  a:hover {
-    text-decoration: underline;
-  }
+      a {
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
+      }
 
-</style>
-</head>
+      a:hover {
+        text-decoration: underline;
+      }
+
+      /* added the following styles for the drop-down menu */
+      #tutorial-menu {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      #tutorial-menu option {
+        font-size: 24px;
+      }
+    </style>
+  </head>
   <body>
     <header>
       <h1>About Me</h1>
       <img src="https://raw.githubusercontent.com/MZain-electro/MZain-electro.github.io/main/me.jpg" alt="My Picture">
     </header>
-<section>
-  <p>My name is Mohammad Zain and I am a student at the Zakir Husain College of Engineering and Technology at Aligarh Muslim University, where I am pursuing Bachelor of Technology in Electronics Engineering
-    . I freuquently work on FPGA projects, but I have felt a gap between beginner level FPGA projects and advanced level projects.
-    This is a webiste is work in the direction fill this gap. This website is a work in progress. This website is dedicated to hosting my FPGA tutorials and projects. Through this website I am also trying to brush up my HTML skills,
-  hence it would take time for me to enable messaging notifications in the website itself. But, you are welcome to ask questions through my LinkedIn page or/and email.</p>
-</section>
+    <section>
+      <p>My name is Mohammad Zain and I am a student at the Zakir Husain College of Engineering and Technology at Aligarh Muslim University, where I am pursuing Bachelor of Technology in Electronics Engineering. I frequently work on FPGA projects, but I have felt a gap between beginner level FPGA projects and advanced level projects. This is a website is work in the direction fill this gap. This website is a work in progress. This website is dedicated to hosting my FPGA tutorials and projects. Through this website I am also trying to brush up my HTML skills, hence it would take time for me to enable messaging notifications in the website itself. But, you are welcome to ask questions through my LinkedIn page or/and email.</p>
 
-<section>
-  <h1>Objective</h1>
-  <p>The objective of this website is to provide high-quality tutorials and resources for FPGA development. My goal is to help beginners get started with FPGA development and to provide advanced users with new ideas and techniques for their projects.</p>
 </section>
-
 <section>
   <h1>Tutorials</h1>
+  <select onchange="if (this.value) window.location.href=this.value;">
+    <option value="">Select a tutorial:</option>
+    <option value="tutorial_1.html">Tutorial 1: Using UART to Input Data from PC to FPGA</option>
+    <option value="tutorial_2.html">Tutorial 2: How to Use Clock on FPGA Board</option>
+    <option value="tutorial_3.html">Tutorial 3: Using IPs in Vivado</option>
+    <option value="tutorial_4.html">Tutorial 4: Developing FPGA Projects with Vivado</option>
+  </select>
+</section>
+<section>
+  <h1>CV</h1>
   <ul>
-    <li><a href="tutorial_1.html">Tutorial 1: Using UART to Input Data from PC to FPGA</a></li>
-    <li><a href="tutorial_2.html">Tutorial 2: How to Use Clock on FPGA Board</a></li>
-    <li><a href="tutorial_3.html">Tutorial 3: Using IPs in Vivado</a></li>
-    <li><a href="tutorial_4.html">Tutorial 4: Developing FPGA Projects with Vivado</a></li>
-    <li><a href="MyCV.html">CV</a></li>
-
+    <li><a href="MyCV.html">Download CV</a></li>
   </ul>
-</div>
+</section>
 <footer>
   <p><b>Contact Me:</b></p>
   <ul>
     <li>Email: zain11.astro@gmail.com</li>
-    
     <li>LinkedIn: <a href="https://www.linkedin.com/in/zain-mohammad">https://www.linkedin.com/in/zain-mohammad</a></li>
   </ul>
 </footer>
 </body>
-</html>
+</html> 
