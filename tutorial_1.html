@@ -7,6 +7,16 @@
         background-color: #f2f2f2;
         font-family: Arial, sans-serif;
       }
+      .video-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      video {
+        max-width: 100%;
+        max-height: 100%;
+      }
       h1 {
         font-size: 32px;
       }
@@ -110,6 +120,10 @@
 <li>When samplecounter gets to 1, the shift also becomes 1, but RxD only gets updated with rxshiftreg at the next cycle of the slower clock. This happens after two cycles have passed, which is almost the middle of the bit due to the fast 100MHz clock.</li>
 <li>At the third cycle of the slow clock, samplecounter goes to 2, and in the fourth cycle, it goes to 3, and the data bit is completed.</li>
 </ol>
+
+<div class="video-container">
+  <video src="https://github.com/MZain-electro/MZain-electro.github.io/blob/af8664c268189b99032f0ba11be888ce5e663ffe/FPGA1.mp4" controls autoplay loop></video>
+</div>
 
     </div>
   </body>
